@@ -1,6 +1,14 @@
 package main
 
+import (
+	"fmt"
+)
+
 func main() {
 	cards := newDeck()
-	cards.print()
+	hand, remainingCards := deal(cards, 5)
+	fmt.Println(hand.toString())
+	fmt.Println(remainingCards.toString())
+	hand.saveToFile("my_hand")
+	remainingCards.saveToFile("remaining_cards")
 }
