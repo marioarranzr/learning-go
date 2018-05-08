@@ -46,12 +46,10 @@ alex2.lastName = "Anderson"
 >**go** is a *pass by value* language. If we need to access to an object by reference, it is necessary to specify it
 
 >`&variable` is the **memory address** of the value this variable is pointing at. i.e.: x000A
->`variablePointer := &variable`
 
 >`*variable` is the **value** this memory address is pointing at. i.e.: "Mario"
 
 >`variable *type` means that `variable` is a pointer to a `person`
->`func (variable *type) function {...}`
 
 ## 05-maps
 ```go
