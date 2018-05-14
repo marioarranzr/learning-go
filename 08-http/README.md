@@ -6,6 +6,7 @@ package main
 import (
 	"log"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -13,10 +14,22 @@ func main() {
 	// http.Handle("/", http.HandlerFunc(handler))
 	// http.Handle("/", http.TimeoutHandler(http.HandlerFunc(handler), time.Second, "timed out"))
 
-
+	// 1. First approach
 	if err := http.ListenAndServe(":8080", nil); err != nil {
 		log.Fatal(err)
 	}
+
+	// 2. Cleaner way
+	server := &http.Server{
+		Addr:         "8080",
+		ReadTimeout:  time.Second * 10,
+		WriteTimeout: time.Second * 10,
+		IdleTimeout:  time.Minute,
+	}
+	if err := server.ListenAndServe(); err != nil {
+		log.Fatal(err)
+	}
+
 }
 
 func handler(w http.ResponseWriter, req *http.Request) {

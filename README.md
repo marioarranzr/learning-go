@@ -2,6 +2,9 @@
 
 [Go: The Complete Developer's Guide (Golang)](https://www.udemy.com/go-the-complete-developers-guide/)
 
+#### Utils
+[Snippet generator](https://pawelgrzybek.github.io/snippet-generator/)
+
 ## 01-helloworld
 >`go run main.go`
 
