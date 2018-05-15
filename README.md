@@ -65,3 +65,10 @@ colors3 := make(map[string]string)
 colors3["red"] = "#ff0000"
 delete(colors3, "red")
 ```
+
+## 11-channel
+```go
+channel <- 5 // Send the value '5' into this channel
+myNumber <- channel // Wait for a value to be sent into the channel. Asign it to myNumber
+fmt.Println(<- channel) // Wait for a value to be sent into the channel. Log it out
+```
