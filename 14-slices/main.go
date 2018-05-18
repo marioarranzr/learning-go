@@ -1,13 +1,9 @@
 package main
 
-import "fmt"
-
-// Saiyan stuct
-type Saiyan struct {
-	Name   string
-	Power  int
-	Father *Saiyan
-}
+import (
+	"fmt"
+	"sort"
+)
 
 func main() {
 
@@ -16,7 +12,7 @@ func main() {
 	fmt.Println(names)
 	// [leto jessica paul mario]
 
-	checks := make([]bool, 10) // Book 10 spaces and write the default value in them
+	checks := make([]bool, 10) // Book 10 spaces and write the default value in them. Same as make([]bool, 10, 10)
 	checks = append(checks, true)
 	fmt.Println(checks)
 	// [false false false false false false false false false false true]
@@ -30,5 +26,15 @@ func main() {
 	scores = append(scores, 122)
 	fmt.Println(scores)
 	// [122]
+
+	scores2 := []int{1, 2, 3, 4, 5}
+	slice := scores2[2:4]
+	slice[0] = 999
+	fmt.Println(scores2)
+	sort.Ints(scores2)
+	fmt.Println(scores2)
+	scores3 := make([]int, 2)
+	copy(scores3, scores2[:2])
+	fmt.Println(scores3)
 
 }
