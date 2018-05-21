@@ -6,6 +6,8 @@
 >`go run main.go`
 
 ## 02-cards
+>Libraries used: `fmt`, `io/ioutil`, `math/rand`, `os`, `strings`,`time`
+
 >`go run main.go deck.go`
 
 ```go
@@ -63,3 +65,20 @@ colors3 := make(map[string]string)
 colors3["red"] = "#ff0000"
 delete(colors3, "red")
 ```
+
+## 06-07-interfaces
+```go
+type shape interface {
+	printArea() float64
+}
+func (t triangle) printArea() float64 {
+    // ...
+}
+func (s square) printArea() float64 {
+    // ...
+}
+```
+
+## 08-http
+
+>Libraries used: `fmt`, `io`, `net/http`, `os`
