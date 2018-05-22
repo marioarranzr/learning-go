@@ -1,12 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 	"time"
 
-	_ "go-web-dev/01-queue/queue"
+	"go/go-web-dev/01-queue/queue"
 
 	"github.com/julienschmidt/httprouter"
 )
@@ -22,7 +23,7 @@ func main() {
 	mux := httprouter.New()
 	mux.GET("/", index)
 	mux.GET("/about", about)
-	mux.GET("/queue", queue)
+	mux.GET("/queue", _queue)
 
 	server := &http.Server{
 		Addr:         ":8080",
@@ -48,17 +49,17 @@ func about(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	HandleError(w, err)
 }
 
-func queue(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
+func _queue(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	// items := []int{1, 2, 3}
 
-	s := ItemQueue{}
+	s := queue.ItemQueue{}
 	s.Enqueue(1)
 	s.Enqueue(2)
 	s.Enqueue(3)
 
-	// if size := s.Size(); size != 3 {
-	// 	fmt.Println("dddd")
-	// }
+	if size := s.Size(); size != 3 {
+		fmt.Println("dddd")
+	}
 }
 
 // HandleError Error response haldling

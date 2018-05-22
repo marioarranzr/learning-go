@@ -1,15 +1,15 @@
-package main
+package queue
 
 import (
 	"fmt"
 )
 
-// Node is just a int
+// Node struct
 type Node struct {
 	Value int
 }
 
-// Queue is a basic FIFO queue based on a circular list that resizes as needed.
+// Queue is a basic FIFO queue based on a circular list that resizes as needed
 type Queue struct {
 	nodes []*Node
 	head  int
@@ -17,7 +17,7 @@ type Queue struct {
 	count int
 }
 
-// Push adds a node to the queue.
+// Push adds a node to the queue
 func (q *Queue) Push(n *Node) {
 	if q.head == q.tail && q.count > 0 {
 		nodes := make([]*Node, len(q.nodes)*2)
@@ -32,7 +32,7 @@ func (q *Queue) Push(n *Node) {
 	q.count++
 }
 
-// Pop removes and returns a node from the queue in first to last order.
+// Pop removes and returns a node from the queue in first to last order
 func (q *Queue) Pop() *Node {
 	if q.count == 0 {
 		return nil
@@ -43,10 +43,13 @@ func (q *Queue) Pop() *Node {
 	return node
 }
 
-func main() {
-	q := &Queue{nodes: make([]*Node, 3)}
-	q.Push(&Node{1})
-	q.Push(&Node{2})
-	q.Push(&Node{3})
-	fmt.Printf("%v, %v, %v\n", q.Pop().Value, q.Pop().Value, q.Pop().Value)
+func (node *Node) String() string {
+	return fmt.Sprint(node.Value)
+}
+
+// NewQueue creates a new queue
+func NewQueue(size int) *Queue {
+	return &Queue{
+		nodes: make([]*Node, size),
+	}
 }
