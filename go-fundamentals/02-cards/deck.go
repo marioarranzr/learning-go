@@ -50,9 +50,10 @@ func (d deck) saveToFile(filename string) error {
 func newDeckFromFile(filename string) deck {
 	bs, err := ioutil.ReadFile(filename)
 	if err != nil {
-		// Option #1 - log the error and return a call to newDeck()
-		// Option #2 - Log the error and entirely quit the program
 		fmt.Println("Error:", err)
+		// Option #1 - log the error and return a call to newDeck()
+		// newDeck()
+		// Option #2 - Log the error and entirely quit the program
 		os.Exit(1)
 	}
 	cardsStringWithoutBlanks := strings.Replace(string(bs), ", ", ",", -1)
