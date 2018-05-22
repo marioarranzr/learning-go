@@ -1,5 +1,5 @@
 // Package queue creates a ItemQueue data structure for the Item type
-package main
+package queue
 
 import (
 	"sync"

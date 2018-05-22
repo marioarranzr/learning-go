@@ -1,11 +1,12 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"log"
 	"net/http"
 	"time"
+
+	_ "go-web-dev/01-queue/queue"
 
 	"github.com/julienschmidt/httprouter"
 )
@@ -50,16 +51,14 @@ func about(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 func queue(w http.ResponseWriter, req *http.Request, _ httprouter.Params) {
 	// items := []int{1, 2, 3}
 
-	s := ItemQueue{
-		items: make([]Item, 5, 5),
-	}
+	s := ItemQueue{}
 	s.Enqueue(1)
 	s.Enqueue(2)
 	s.Enqueue(3)
 
-	if size := s.Size(); size != 3 {
-		fmt.Println("dddd")
-	}
+	// if size := s.Size(); size != 3 {
+	// 	fmt.Println("dddd")
+	// }
 }
 
 // HandleError Error response haldling
